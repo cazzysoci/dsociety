@@ -249,19 +249,27 @@ p {
 <br><font face="Shadows Into Light Two" color="red" size="3px">~Special Greetz to~<br></font> 
 <font face="Shadows Into Light Two" size="3px" color="chartreuse">-=$ 3MUSKETEERZ $=-<br></font>
 <hr class="audio-hr" style="width: 80%; max-width: 400px; margin: 20px auto; border: 0; height: 1px; background: linear-gradient(to right, transparent, #666, transparent);">
-<div class="audio-container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 20px auto; padding: 20px; width: 90%; max-width: 450px;">
-    <p style="margin-bottom: 15px; color: white; font-style: italic; text-align: center;">
-        Please press the button to play music
+
+<!-- Centered Audio Player -->
+<div class="audio-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin: 20px auto; padding: 20px; width: 90%; max-width: 450px;">
+    <p style="margin-bottom: 15px; color: white; font-style: italic;">
+  Please press the button to play music
     </p>
     
     <audio controls style="width: 100%; max-width: 400px; margin: 0 auto;">
         <source src="https://k.top4top.io/m_3644mm9hw1.mp3" type="audio/mpeg">
         <source src="https://k.top4top.io/m_3644mm9hw1.ogg" type="audio/ogg">
         
-        <p style="color: #ff6b6b; font-size: 14px; margin: 10px 0; text-align: center;">
+        <p style="color: #ff6b6b; font-size: 14px; margin: 10px 0;">
             Your browser doesn't support HTML5 audio.
         </p>
     </audio>
 </div>
-</body>
+<!-- End of Centered Audio Player -->
+
+<div class="container">
+    <audio id="bgm" loop preload="auto">
+        <source src="msic.mp3" type="audio/mpeg">
+    </audio>
+</div>
 </html>
