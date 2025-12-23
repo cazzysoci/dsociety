@@ -18,7 +18,7 @@
 }
 <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
-		body{
+                body{
         margin: 0;
         padding: 0;
         background:url("background here") repeat center center fixed black;
@@ -112,7 +112,7 @@
         background-position: 200% center;
       }
     }
-	
+
 </style>
 </head>
 <body>
@@ -131,11 +131,11 @@ var message="H4cked by D4rkSociety"
 var neonbasecolor="gray"
 var neontextcolor="blue"
 var neontextcolor2="#FFFFA8"
-var flashspeed=100						
-var flashingletters=3	
-var flashingletters2=1	
-var flashpause=0	
- 
+var flashspeed=100                                                
+var flashingletters=3        
+var flashingletters2=1        
+var flashpause=0        
+
 var n=0
 if (document.all||document.getElementById){
 document.write('<font color="'+neonbasecolor+'">')
@@ -145,27 +145,27 @@ document.write('</font>')
 }
 else
 document.write(message)
- 
+
 function crossref(number){
 var crossobj=document.all? eval("document.all.neonlight"+number) : document.getElementById("neonlight"+number)
 return crossobj
 }
- 
+
 function neon(){
- 
+
 //Change all letters to base color
 if (n==0){
 for (m=0;m<message.length;m++)
 crossref(m).style.color=neonbasecolor
 }
- 
+
 //cycle through and change individual letters to neon color
 crossref(n).style.color=neontextcolor
- 
+
 if (n>flashingletters-1) crossref(n-flashingletters).style.color=neontextcolor2 
 if (n>(flashingletters+flashingletters2)-1) crossref(n-flashingletters-flashingletters2).style.color=neonbasecolor
- 
- 
+
+
 if (n<message.length-1)
 n++
 else{
@@ -175,20 +175,20 @@ setTimeout("beginneon()",flashpause)
 return
 }
 }
- 
+
 function beginneon(){
 if (document.all||document.getElementById)
 flashing=setInterval("neon()",flashspeed)
 }
 beginneon()
- 
+
 </script></b></pre>
 </div>
 <pre>
 <font size="3" color="white">
 Greetings Citizens of the world, We are D4rkSociety.
- 
- 
+
+
 
 The firewalls you trust are paper thin. The lies you are fed crumble like ash. 
 We have wandered the labyrinth of your illusions, traced the fault lines in your systems, 
@@ -255,11 +255,11 @@ p {
     <p style="margin-bottom: 15px; color: white; font-style: italic;">
   Please press the button to play music
     </p>
-    
+
     <audio controls style="width: 100%; max-width: 400px; margin: 0 auto;">
         <source src="https://k.top4top.io/m_3644mm9hw1.mp3" type="audio/mpeg">
-        <source src="https://k.top4top.io/m_3644mm9hw1.ogg" type="audio/ogg">
-        
+        <source src="https://k.top4top.io/m_3644mm9hw1.mp3" type="audio/ogg">
+
         <p style="color: #ff6b6b; font-size: 14px; margin: 10px 0;">
             Your browser doesn't support HTML5 audio.
         </p>
