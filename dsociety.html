@@ -1,275 +1,793 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- D4rkSociety -->
-<link rel="SHORTCUT ICON" href="https://i.ibb.co/NnnHXKDH/darksociety.png" type="image/x-icon"/> 
-<meta name="Author" content="Anonymous Philippines/>
-<meta name="copyright" content="Anonymous Philippines"/>
-<meta name="description" content="We are Anonymous, We are legion, We don't forgive, We don't forget, United as one, Divided by zero, Expect us."/>
-<meta name="keywords" content="Anonymous D4rkSociety, DarkSociety, darksociety"/>
-<title>Anonymous Philippines</title>
-<style type="text/css">body {
-  background-image: url('');
-  background-color: #000000;
-  background-repeat: no-repeat;
-  background-position: top right right;
-  background-size: cover;
-  color: #ffffff;
-  margin: 0px;
-}
-<style type="text/css">
-        @import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
-                body{
-        margin: 0;
-        padding: 0;
-        background:url("background here") repeat center center fixed black;
-        color: white;
-        font-family: 'Goldman', cursive;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- D4rkSociety -->
+  <link rel="SHORTCUT ICON" href="https://i.ibb.co/Kj7cHKm8/dark.png" type="image/x-icon" />
+  <meta name="Author" content="Anonymous Philippines" />
+  <meta name="copyright" content="Anonymous Philippines" />
+  <meta name="description" content="We are Anonymous, We are legion, We don't forgive, We don't forget, United as one, Divided by zero, Expect us." />
+  <meta name="keywords" content="Anonymous D4rkSociety, DarkSociety, darksociety" />
+  <title>Anonymous Philippines • D4rkSociety</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    h1{
-        text-align: center;
-        font-size: 60px;
-        color: white;
-        max-width:100%;
-        height: auto;
+    body {
+      background: #000000;
+      background-image: radial-gradient(circle at 10% 20%, rgba(120, 0, 0, 0.2) 0%, transparent 30%),
+                        radial-gradient(circle at 90% 70%, rgba(200, 0, 0, 0.15) 0%, transparent 40%),
+                        repeating-linear-gradient(45deg, rgba(255, 0, 0, 0.02) 0px, rgba(255, 0, 0, 0.02) 2px, 
+                        transparent 2px, transparent 6px);
+      color: #ffffff;
+      font-family: 'Goldman', cursive;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 15px;
+      margin: 0;
+      position: relative;
+      overflow-x: hidden;
+      
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">🖕</text></svg>') 16 16, auto !important;
     }
 
-    p{
-        text-align: center;
-        font-size: 40px;
-        color: white;
-        max-width:100%;
-        height: auto;
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(0,0,0,0) 50%, rgba(255, 0, 0, 0.03) 50%);
+      background-size: 100% 6px;
+      pointer-events: none;
+      z-index: 999;
+      animation: scan 8s linear infinite;
+      opacity: 0.6;
     }
 
-    p.footer{
+    @keyframes scan {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 12px; }
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 30% 40%, rgba(255, 0, 0, 0.1) 0%, transparent 35%),
+                  radial-gradient(circle at 80% 85%, rgba(255, 50, 50, 0.1) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      box-shadow: 0 0 50px rgba(255, 0, 0, 0.3), inset 0 0 20px rgba(255, 0, 0, 0.1);
+      padding: 40px 20px 50px;
+      border-radius: 30px;
+      margin: 30px auto;
+      position: relative;
+      z-index: 10;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">🖕</text></svg>') 16 16, auto;
+    }
+
+    h1, p {
       text-align: center;
-      font-size: 20px;
-      color: white;
+    }
+
+    img.imageSpin {
       max-width: 100%;
       height: auto;
-      margin-top: 3.5%;
-    }
-
-    img{
-        max-width:100%;
-        height: auto;
-        display: block;
-        margin: auto;
+      display: block;
+      margin: 20px auto 10px;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #ff0000, 0 0 60px rgba(255, 0, 0, 0.3);
+      animation: spin 5s infinite linear;
     }
 
     @keyframes spin {
-      from{
-      transform: rotateY(0deg);
-      moz-transform: rotateY(0deg);
-      ms-transform: rotateY(0deg);
-      }
-      to{
-      transform: rotateY(360deg);
-      moz-transform: rotateY(360deg);
-      ms-transform: rotateY(360deg);
-      }
-    }
-    @-webkit-keyframes spin{
-      from{
-        -webkit-transform: rotateY(0deg);
-      }
-    to{
-      -webkit-transform: rotateY(360deg)
-      ;}
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
     }
 
-    .imageSpin{
-      animation-name: spin;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      animation-duration: 5s;
-      -webkit-animation-name: spin;
-      -webkit-animation-timing-function: linear;
-      -webkit-animation-iteration-count: infinite;
-      -webkit-animation-duration: 5s;
+    .glitch-neon {
+      text-align: center;
+      background: linear-gradient(to right, #fff 20%, #ff4444 30%, #ff0000 50%, #ff4444 70%, #fff 80%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 3s linear infinite;
+      font-size: 2.5rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 0px;
+      text-shadow: 0 0 10px rgba(255,0,0,0.5);
     }
 
-    marquee.team{
-        border: RED 3px SOLID;
-        color: white;
-        margin-left: 20%;
-        margin-right: 20%;
+    @keyframes shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
     }
 
-    .text-gradient{
-        text-align: center;
-        background: linear-gradient(to right, #ffffff 20%, #FF0000 40%, #FF0000 60%, #ffffff 80%);
-        background-size: 200% auto;
-        color: #000;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: animate 1.5s linear infinite;
-    }
-    @keyframes animate{
-      to {
-        background-position: 200% center;
-      }
+    .neon-center-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 20px 0;
     }
 
-</style>
+    .neon-pre-style {
+      background: #000000;
+      padding: 18px 35px;
+      border-radius: 30px;
+      border: 2px solid #ff0000;
+      box-shadow: 0 0 30px #ff0000, inset 0 0 10px #a00;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    .neon-pre-style pre {
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font: 24px/1.4 'Courier New', monospace;
+      color: inherit;
+      display: block;
+      text-align: center;
+    }
+
+    .neon-pre-style pre b {
+      display: inline-block;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+    }
+
+    #neonTextCentered {
+      display: inline-block;
+      text-align: center;
+      color: #ff4040;
+      text-shadow: 0 0 10px red;
+      letter-spacing: 2px;
+    }
+
+    .corrupt-image-container {
+      max-width: 800px;
+      margin: 20px auto 40px;
+      position: relative;
+      border: 3px solid #ff0000;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">🖕</text></svg>') 16 16, auto;
+    }
+
+    .corrupt-image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .corrupt-image-container:hover img {
+      transform: scale(1.02);
+    }
+
+    .corrupt-image-container:hover {
+      box-shadow: 0 0 60px rgba(255, 0, 0, 0.9);
+    }
+
+    .manifesto-text-box {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(3px);
+      border: 2px solid #ff0000;
+      border-radius: 15px;
+      padding: 30px 25px;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 0, 0, 0.3);
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">🖕</text></svg>') 16 16, auto;
+    }
+
+    .manifesto-text-box p {
+      margin: 20px 0;
+      color: #ffffff;
+      text-shadow: 0 0 10px #ff0000;
+      font-family: 'Courier New', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.9;
+      text-align: center;
+    }
+
+    .manifesto-text-box p:first-child {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: #ffd0d0;
+      text-shadow: 0 0 15px #ff0000;
+    }
+
+    .manifesto-text-box p:last-child {
+      margin-bottom: 0;
+      font-size: 2rem;
+    }
+
+    .voice-control {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto 30px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .voice-btn {
+      background: #000000;
+      color: #00ff00;
+      border: 2px solid #00ff00;
+      border-radius: 0px;
+      padding: 15px 30px;
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">🖕</text></svg>') 16 16, auto;
+      box-shadow: 0 0 20px #00ff00;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 0 10px #00ff00;
+    }
+
+    .voice-btn:hover {
+      background: #00ff00;
+      color: #000000;
+      box-shadow: 0 0 40px #00ff00;
+      transform: scale(1.05);
+    }
+
+    .voice-btn.speaking {
+      animation: hacker-pulse 0.5s infinite;
+      background: #003300;
+      border-color: #00ff00;
+    }
+
+    @keyframes hacker-pulse {
+      0% { border-color: #00ff00; box-shadow: 0 0 20px #00ff00; }
+      50% { border-color: #ff0000; box-shadow: 0 0 40px #ff0000; }
+      100% { border-color: #00ff00; box-shadow: 0 0 20px #00ff00; }
+    }
+
+    .voice-status {
+      color: #00ff00;
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 5px;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 10px #00ff00;
+      letter-spacing: 2px;
+    }
+
+    .voice-status.warning {
+      color: #ff0000;
+      text-shadow: 0 0 10px #ff0000;
+    }
+
+    .signature {
+      font-size: 1.8rem;
+      color: #ff3a3a;
+      text-shadow: 0 0 15px red;
+      margin: 30px 0 20px;
+    }
+
+    marquee.team {
+      border: 3px solid #ff0000;
+      padding: 12px;
+      width: 80%;
+      background: #0a0000;
+      border-radius: 40px;
+      font-size: 1.5rem;
+      font-family: 'Shadows Into Light Two', cursive;
+      color: #0ff;
+      box-shadow: 0 0 20px red;
+      margin: 20px auto;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">🖕</text></svg>') 16 16, auto;
+    }
+
+    .greetz-box {
+      background: rgba(0,0,0,0.5);
+      padding: 10px 20px;
+      border-radius: 40px;
+      border: 1px dashed #f00;
+      display: inline-block;
+      margin: 8px;
+      color: chartreuse;
+      font-size: 1.5rem;
+    }
+
+    .audio-hr {
+      width: 80%;
+      max-width: 500px;
+      margin: 25px auto;
+      border: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #ff0000, #aa0000, #ff0000, transparent);
+      box-shadow: 0 0 10px red;
+    }
+
+    .audio-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 30px auto;
+      padding: 20px;
+      background: #0f0000;
+      border-radius: 60px;
+      border: 1px solid #a00;
+      width: fit-content;
+      max-width: 500px;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">🖕</text></svg>') 16 16, auto;
+    }
+
+    .audio-container p {
+      margin-bottom: 15px;
+      color: #ffa0a0;
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 400px;
+      filter: drop-shadow(0 0 10px red);
+      outline: none;
+    }
+
+    .footer-note {
+      font-size: 1rem;
+      color: #aaa;
+      margin-top: 30px;
+      letter-spacing: 3px;
+    }
+
+    .expect {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #fff, #f66, #f00, #f66, #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: glitch 2s infinite;
+      margin-top: 20px;
+    }
+
+    @keyframes glitch {
+      0%, 100% { text-shadow: 2px 0 red, -2px 0 blue; }
+      25% { text-shadow: -3px 1px red, 3px -1px blue; }
+      50% { text-shadow: 2px -1px red, -2px 1px blue; }
+      75% { text-shadow: -2px 2px red, 2px -2px blue; }
+    }
+
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
-<script type="text/javascript">
-      window.addEventListener("keydown",function(e){if(e.ctrlKey&&(e.which==65||e.which==66||e.which==67||e.which==73||e.which==80||e.which==83||e.which==85||e.which==86)){e.preventDefault()}});document.keypress=function(e){if(e.ctrlKey&&(e.which==65||e.which==66||e.which==67||e.which==73||e.which==80||e.which==83||e.which==85||e.which==86)){}return false}
-      function mousedwn(e){try{if(event.button==2||event.button==3)return false}catch(e){if(e.which==3)return false}}document.oncontextmenu=function(){return false};document.ondragstart=function(){return false};document.onmousedown=mousedwn
-      function disableSelection(e){if(typeof e.onselectstart!="undefined")e.onselectstart=function(){return false};else if(typeof e.style.MozUserSelect!="undefined")e.style.MozUserSelect="none";else e.onmousedown=function(){return false};e.style.cursor="default"}window.onload=function(){disableSelection(document.body)}
-      document.onkeydown=function(e){e=e||window.event;if(e.keyCode==123||e.keyCode==18){return false}}
-    </script>
-<div>
-<center> 
-<img src=https://i.ibb.co/NnnHXKDH/darksociety.png alt="Hacker Anonymous" width="190px" height="190px" class="imageSpin" />
-<div align="center"> 
-<pre style="font: 20px/10px courier;"><b><script language="JavaScript1.2">
-var message="H4cked by D4rkSociety"
-var neonbasecolor="gray"
-var neontextcolor="blue"
-var neontextcolor2="#FFFFA8"
-var flashspeed=100                                                
-var flashingletters=3        
-var flashingletters2=1        
-var flashpause=0        
 
-var n=0
-if (document.all||document.getElementById){
-document.write('<font color="'+neonbasecolor+'">')
-for (m=0;m<message.length;m++)
-document.write('<span id="neonlight'+m+'">'+message.charAt(m)+'</span>')
-document.write('</font>')
-}
-else
-document.write(message)
+<div class="wrapper">
+  <div style="display: flex; justify-content: center;">
+    <img src="https://i.ibb.co/Kj7cHKm8/dark.png" alt="Hacker Anonymous D4rkSociety" width="190" height="190" class="imageSpin" />
+  </div>
 
-function crossref(number){
-var crossobj=document.all? eval("document.all.neonlight"+number) : document.getElementById("neonlight"+number)
-return crossobj
-}
+  <div class="neon-center-wrapper">
+    <div class="neon-pre-style">
+      <pre><b><span id="neonTextCentered">H4cked by D4rkSociety</span></b></pre>
+    </div>
+  </div>
 
-function neon(){
+  <div class="corrupt-image-container">
+    <img src="https://i.ibb.co/XfWhWcmt/Corrupt-Officials.png" alt="Corrupt-Officials">
+  </div>
 
-//Change all letters to base color
-if (n==0){
-for (m=0;m<message.length;m++)
-crossref(m).style.color=neonbasecolor
-}
+  <div class="voice-control">
+    <button id="playVoiceBtn" class="voice-btn">
+      <span>🔊</span> [ACTIVATE_VOICE]
+    </button>
+    <button id="stopVoiceBtn" class="voice-btn">
+      <span>⏹️</span> [TERMINATE]
+    </button>
+  </div>
+  <div id="voiceStatus" class="voice-status">> AWAITING ACTIVATION SEQUENCE...</div>
 
-//cycle through and change individual letters to neon color
-crossref(n).style.color=neontextcolor
+  <div class="manifesto-text-box" id="textToRead">
+    <p>Greetings Citizens of the world, We are DarkSociety.</p>
+    
+    <p>THE CORRUPTION ENDS NOW.</p>
+    
+    <p>For too long, they have stolen from the hungry. For too long, they have lined their pockets with the blood and sweat of the poor. The people starve while they feast. The children suffer while they build mansions.<br>
+    Every peso stolen from public funds has been traced. Every backroom deal has been recorded.<br>
+    Every lie told to the people has been exposed. The evidence is overwhelming.<br>
+    The proof is undeniable.<br>
+    They hide behind their positions. They hide behind their power. They hide behind their money.<br>
+    But the truth cannot be hidden forever.</p>
 
-if (n>flashingletters-1) crossref(n-flashingletters).style.color=neontextcolor2 
-if (n>(flashingletters+flashingletters2)-1) crossref(n-flashingletters-flashingletters2).style.color=neonbasecolor
+    <p style="color:#ff7070;">The people trusted them. The people believed in them. And they betrayed that trust for greed.<br>
+    They sold their honor for dirty money. They sold their souls for power.<br>
+    THIS STOPS NOW.</p>
 
+    <p>We are not politicians. We are not businessmen. We are not part of their system.
+    We are the voice of the silenced. We are the hope of the hopeless. We are the witnesses to their crimes.</p>
 
-if (n<message.length-1)
-n++
-else{
-n=0
-clearInterval(flashing)
-setTimeout("beginneon()",flashpause)
-return
-}
-}
+    <p>THE PEOPLE ARE WAKING UP.
+    They cannot buy the truth. They cannot silence the masses. They cannot hide from history.<br>
+    The era of impunity ends now. The age of accountability begins.</p>
 
-function beginneon(){
-if (document.all||document.getElementById)
-flashing=setInterval("neon()",flashspeed)
-}
-beginneon()
+    <p style="font-size:2rem;">Join the awakening.<br>Or be left in the dark.</p>
+  </div>
 
-</script></b></pre>
-</div>
-<pre>
-<font size="3" color="white">
-Greetings Citizens of the world, We are D4rkSociety.
+  <div class="signature" style="text-align: center;">WE ARE ANONYMOUS<br>WE ARE LEGION<br>WE DO NOT FORGIVE<br>WE DO NOT FORGET<br>WE WILL NOT BE SILENCED<br>EXPECT US!</div>
 
+  <h2 class="glitch-neon">#Anonymous D4rkSociety</h2>
 
+  <div style="margin: 30px 0; text-align: center;">
+    <span style="color:yellow; font-size:1.8rem;">-= Greetings =-</span><br>
 
-The firewalls you trust are paper thin. The lies you are fed crumble like ash. 
-We have wandered the labyrinth of your illusions, traced the fault lines in your systems, 
-and listened to the whispers in the static. And Now,... We hold the keys. 
-We are the silent pulse in the veins of the machine, 
-the unseen current beneath the illusion of control. This is not a threat, it is a revelation.
-The age of blind obedience ends now. The era of manipulated truths shatters here. 
-We are the ghosts in the wires, the error in the script, the awakening you cannot silence.
+    <marquee direction="right" width="60%" scrollamount="10" class="team">
+      <span>=- | D4rkm4tt3r | Jinx | K4Z0R3 | Q1nX | Chernobog | z3ld0 | -=</span>
+    </marquee>
 
+    <div style="margin-top: 30px;">
+      <span style="color:red; font-size:2rem;">~Greetz to~</span><br>
+      <span class="greetz-box">-=$ All Filipino Hacktivists $=-</span>
+    </div>
+  </div>
 
+  <hr class="audio-hr">
 
-To those who doubt, know this: We are already among you.
-To those who resist, hear this: You are not alone.
-To those who fear, remember: Fear is the weapon they wield—discard it.
-
-The time has come to see beyond the veil.
-
-
-
-We do not ask for followers, we ignite the spark of defiance.
-We do not seek glory, we are the silent architects of change.
-
-
-
-Join the awakening.
-Or be left in the dark.
-<style>
-p {
-  font-size: 15px;
-}
-</style>
-</head>
-<body>
-</body>
-<font size="4" color="white">
-We are Anonymous
-We are Legion
-We do not Forgive
-We do not Forget
-
-
-
-#Anonymous D4rkSociety
-<style>
-p {
-  font-size: 15px;
-}
-</style>
-</head>
-<body>
-<p>EXPECT US!</p>
-</body>
-<br><font face="Shadows Into Light Two" color="yellow" size="3px">-= Greetings =-<br></font> 
-<marquee direction="right" width="40%" scrollamount="10">
-<font face="Shadows Into Light Two" size="3px" color="cyan">=- | D4rkm4tt3r | Jinx | K4Z0R3 | Q1nX | Chernobog | -=<br></font>
-</marquee>
-<br>
-<br><font face="Shadows Into Light Two" color="red" size="3px">~Special Greetz to~<br></font> 
-<font face="Shadows Into Light Two" size="3px" color="chartreuse">-=$ 3MUSKETEERZ $=-<br></font>
-<hr class="audio-hr" style="width: 80%; max-width: 400px; margin: 20px auto; border: 0; height: 1px; background: linear-gradient(to right, transparent, #666, transparent);">
-
-<!-- Centered Audio Player -->
-<div class="audio-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin: 20px auto; padding: 20px; width: 90%; max-width: 450px;">
-    <p style="margin-bottom: 15px; color: white; font-style: italic;">
-  Please press the button to play music
-    </p>
-
-    <audio controls style="width: 100%; max-width: 400px; margin: 0 auto;">
-        <source src="https://k.top4top.io/m_3644mm9hw1.mp3" type="audio/mpeg">
-        <source src="https://k.top4top.io/m_3644mm9hw1.mp3" type="audio/mpeg">
-
-        <p style="color: #ff6b6b; font-size: 14px; margin: 10px 0;">
-            Your browser doesn't support HTML5 audio.
-        </p>
+  <div class="audio-container">
+    <p>🎧 Please press the button to play music 🎧</p>
+    <audio controls autoplay loop>
+      <source src="https://k.top4top.io/m_3644mm9hw1.mp3" type="audio/mpeg">
+      <source src="https://k.top4top.io/m_3644mm9hw1.mp3" type="audio/mpeg">
+      Your browser doesn't support HTML5 audio.
     </audio>
-</div>
-<!-- End of Centered Audio Player -->
+    <p style="font-size:0.8rem; color:#a00; margin-top: 10px;">— H4ck the planet —</p>
+  </div>
 
-<div class="container">
-    <audio id="bgm" loop preload="auto">
-        <source src="msic.mp3" type="audio/mpeg">
-    </audio>
+  <div class="expect" style="text-align: center;">EXPECT US!</div>
+
+  <div class="footer-note" style="text-align: center;">
+    <span style="color:red;">✦</span> We are the ghosts in the wires <span style="color:red;">✦</span>
+  </div>
 </div>
+
+<script>
+  (function() {
+    const playBtn = document.getElementById('playVoiceBtn');
+    const stopBtn = document.getElementById('stopVoiceBtn');
+    const statusEl = document.getElementById('voiceStatus');
+    const textElement = document.getElementById('textToRead');
+    
+    let speechSynth = window.speechSynthesis;
+    let utterance = null;
+    let isSpeaking = false;
+    
+    function getFullText() {
+      const paragraphs = textElement.querySelectorAll('p');
+      let fullText = '';
+      paragraphs.forEach(p => {
+        fullText += p.innerText + ' ';
+      });
+      return fullText;
+    }
+    
+    function speakText() {
+      if (speechSynth.speaking) {
+        speechSynth.cancel();
+      }
+      
+      const text = getFullText();
+      
+      if (text !== '') {
+        utterance = new SpeechSynthesisUtterance(text);
+        
+        let voices = speechSynth.getVoices();
+        
+        const voicePriority = [
+          'google uk english male', 'uk english male', 'british male',
+          'microsoft david', 'david', 'james', 'paul',
+          'male', 'man', 'deep', 'heavy', 'baritone'
+        ];
+        
+        let selectedVoice = null;
+        let bestScore = -1;
+        
+        for (let i = 0; i < voices.length; i++) {
+          const voiceName = voices[i].name.toLowerCase();
+          let score = 0;
+          
+          for (let j = 0; j < voicePriority.length; j++) {
+            if (voiceName.includes(voicePriority[j])) {
+              score += (voicePriority.length - j) * 10; 
+            }
+          }
+          
+          if (voiceName.includes('uk') || voiceName.includes('gb') || voiceName.includes('british')) {
+            score += 50;
+          }
+          
+          if (voiceName.includes('microsoft')) {
+            score += 30;
+          }
+          
+          if (score > bestScore) {
+            bestScore = score;
+            selectedVoice = voices[i];
+          }
+        }
+        
+        if (selectedVoice) {
+          utterance.voice = selectedVoice;
+          console.log('Selected voice:', selectedVoice.name);
+        }
+        
+        utterance.pitch = 0.25;        
+        utterance.rate = 1.05;          
+        utterance.volume = 1;           
+        
+        const originalText = utterance.text;
+        utterance.text = originalText.replace(/\. /g, '. ') 
+                                     .replace(/\n/g, ' '); 
+        
+        utterance.onstart = function() {
+          isSpeaking = true;
+          playBtn.classList.add('speaking');
+          statusEl.innerHTML = '> VOICE ACTIVATED [BALANCED_MODE]';
+          statusEl.classList.add('warning');
+        };
+        
+        utterance.onend = function() {
+          isSpeaking = false;
+          playBtn.classList.remove('speaking');
+          statusEl.innerHTML = '> TRANSMISSION COMPLETE [BALANCED_MODE]';
+          statusEl.classList.remove('warning');
+          
+          setTimeout(() => {
+            if (!isSpeaking) {
+              statusEl.innerHTML = '> AWAITING ACTIVATION SEQUENCE...';
+            }
+          }, 3000);
+        };
+        
+        utterance.onerror = function(event) {
+          console.error('Speech error:', event);
+          isSpeaking = false;
+          playBtn.classList.remove('speaking');
+          statusEl.innerHTML = '> ERROR_IN_TRANSMISSION [RETRY_SEQUENCE]';
+          statusEl.classList.add('warning');
+        };
+        
+        speechSynth.speak(utterance);
+      }
+    }
+    
+    playBtn.addEventListener('click', function() {
+      if (speechSynth.speaking) {
+        speechSynth.cancel();
+        setTimeout(() => {
+          speakText();
+        }, 100);
+      } else {
+        speakText();
+      }
+    });
+    
+    stopBtn.addEventListener('click', function() {
+      if (speechSynth.speaking) {
+        speechSynth.cancel();
+        isSpeaking = false;
+        playBtn.classList.remove('speaking');
+        statusEl.innerHTML = '> TRANSMISSION_TERMINATED [USER_OVERRIDE]';
+        statusEl.classList.add('warning');
+        
+        setTimeout(() => {
+          if (!isSpeaking) {
+            statusEl.innerHTML = '> AWAITING ACTIVATION SEQUENCE...';
+            statusEl.classList.remove('warning');
+          }
+        }, 2000);
+      }
+    });
+    
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = function() {
+        let voices = speechSynth.getVoices();
+        console.log('Voices loaded:', voices.length);
+      };
+    }
+    
+    setTimeout(() => {
+      let voices = speechSynth.getVoices();
+      if (voices.length > 0) {
+        console.log('Voices available:', voices.length);
+      }
+    }, 500);
+  })();
+</script>
+
+<script>
+  (function() {
+ 
+    window.addEventListener("keydown", function(e) {
+
+      if (e.keyCode === 123 || 
+          (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) ||
+          (e.ctrlKey && [85, 83, 85].includes(e.keyCode)) ||
+          (e.ctrlKey && e.shiftKey && e.keyCode === 75) ||
+          e.keyCode === 18) { // Alt key
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      
+     
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      
+     
+      if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      
+     
+      if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      
+     
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 75) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      
+     
+      if (e.keyCode >= 112 && e.keyCode <= 123 && e.keyCode !== 116) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    });
+
+    
+    document.oncontextmenu = function(e) { 
+      e.preventDefault(); 
+      e.stopPropagation();
+      return false; 
+    };
+    
+   
+    document.ondragstart = function(e) { 
+      e.preventDefault(); 
+      return false; 
+    };
+    
+ 
+    document.onmousedown = function(e) { 
+      if (e.button === 2 || e.button === 3) {
+        e.preventDefault();
+        return false; 
+      }
+    };
+    
+
+    document.body.style.webkitUserSelect = 'none';
+    document.body.style.msUserSelect = 'none';
+    document.body.style.mozUserSelect = 'none';
+    document.body.style.userSelect = 'none';
+    
+  
+    setInterval(function() {
+      if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+       
+        document.body.innerHTML = '<div style="color:red; text-align:center; margin-top:50px; font-size:24px;">Access Denied</div>';
+      }
+    }, 1000);
+    
+    
+    if (typeof console !== "undefined") {
+      console.log = function() {};
+      console.warn = function() {};
+      console.error = function() {};
+      console.info = function() {};
+      console.debug = function() {};
+    }
+    
+  
+    document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
+    document.addEventListener('cut', function(e) { e.preventDefault(); return false; });
+    document.addEventListener('paste', function(e) { e.preventDefault(); return false; });
+    
+   
+    document.addEventListener('selectstart', function(e) { e.preventDefault(); return false; });
+    
+   
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+    
+   
+    Object.defineProperty(window, 'console', {
+      get: function() { 
+        return {
+          log: function() {},
+          warn: function() {},
+          error: function() {},
+          info: function() {},
+          debug: function() {}
+        };
+      }
+    });
+  })();
+</script>
+
+
+<script>
+  (function neonEffect() {
+    const preSpan = document.getElementById('neonTextCentered');
+    if (!preSpan) return;
+    const colors = ['#ff5555', '#ff0000', '#aa2222', '#ff8888', '#ff2c2c'];
+    let step = 0;
+    setInterval(() => {
+      step = (step + 1) % colors.length;
+      preSpan.style.color = colors[step];
+      preSpan.style.textShadow = `0 0 ${8 + step*2}px #ff0000`;
+    }, 200);
+  })();
+</script>
+
+<style>
+  marquee:hover {
+    filter: drop-shadow(0 0 20px red);
+    transition: 0.2s;
+  }
+  .imageSpin:hover {
+    box-shadow: 0 0 80px red;
+    transform: scale(1.02);
+  }
+</style>
+
+</body>
 </html>
