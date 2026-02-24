@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- D4rkSociety -->
   <link rel="SHORTCUT ICON" href="https://i.ibb.co/60rygcQf/dark.png" type="image/x-icon" />
   <meta name="Author" content="Anonymous Philippines" />
@@ -404,26 +404,57 @@
       user-select: none;
     }
 
-    /* Mobile-specific styles */
+    /* Android-specific styles */
     @media (max-width: 768px) {
       .voice-btn {
-        padding: 12px 20px;
-        font-size: 1rem;
+        padding: 15px 25px;
+        font-size: 1.1rem;
         width: 100%;
         justify-content: center;
+        min-height: 60px; /* Better touch target */
       }
       
       .voice-control {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
+        width: 100%;
       }
       
       .wrapper {
-        padding: 20px 15px;
+        padding: 20px 12px;
       }
       
       .signature {
         font-size: 1.4rem;
+      }
+      
+      .manifesto-text-box p {
+        font-size: 0.9rem;
+      }
+      
+      /* Better touch targets for Android */
+      button, 
+      .voice-btn,
+      .audio-container,
+      marquee {
+        touch-action: manipulation;
+        -webkit-touch-callout: none;
+      }
+    }
+    
+    /* Specific Android fixes */
+    @media (hover: none) and (pointer: coarse) {
+      /* Android devices */
+      .voice-btn:hover {
+        background: #000000; /* Prevent hover states on touch */
+        color: #00ff00;
+        transform: none;
+      }
+      
+      .voice-btn:active {
+        background: #00ff00;
+        color: #000000;
+        transform: scale(0.95);
       }
     }
   </style>
@@ -530,6 +561,11 @@
     let voicesLoaded = false;
     let availableVoices = [];
     
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    console.log('Device detected:', isAndroid ? 'Android' : 'Other');
+    
     function isSpeechSupported() {
       return 'speechSynthesis' in window;
     }
@@ -547,20 +583,37 @@
         if (voices.length) {
           availableVoices = voices;
           voicesLoaded = true;
+          console.log('Voices loaded immediately:', voices.length);
           resolve(voices);
         } else {
           speechSynth.onvoiceschanged = function() {
             voices = speechSynth.getVoices();
             availableVoices = voices;
             voicesLoaded = true;
+            console.log('Voices loaded after event:', voices.length);
             resolve(voices);
           };
+          
+          setTimeout(() => {
+            if (!voicesLoaded) {
+              voices = speechSynth.getVoices();
+              if (voices.length) {
+                availableVoices = voices;
+                voicesLoaded = true;
+                console.log('Voices loaded via fallback:', voices.length);
+                resolve(voices);
+              }
+            }
+          }, 1000);
         }
       });
     }
     
     loadVoices().then(voices => {
-      console.log('Voices loaded for all browsers:', voices.length);
+      console.log('Voices ready for Android:', voices.length);
+      voices.forEach((voice, index) => {
+        console.log(`Voice ${index}: ${voice.name} (${voice.lang})`);
+      });
     });
     
     function getBestDeepVoice() {
@@ -568,20 +621,29 @@
         return null;
       }
       
-      const voicePreferences = [
+      const androidVoicePreferences = [
+        { name: 'google uk english male', score: 100 },
+        { name: 'google british english male', score: 100 },
+        { name: 'english united kingdom', score: 95 },
+        { name: 'british english male', score: 95 },
+        { name: 'uk english male', score: 95 },
+        { name: 'samsung david', score: 90 },
+        { name: 'samsung james', score: 90 },
+        { name: 'english male', score: 80 },
+        { name: 'male', score: 70 },
+        { name: 'deep', score: 65 }
+      ];
+      
+      const otherVoicePreferences = [
         { name: 'microsoft david', score: 100 },
         { name: 'microsoft mark', score: 95 },
         { name: 'google uk english male', score: 90 },
-        { name: 'google british english male', score: 90 },
-        { name: 'british english male', score: 85 },
-        { name: 'uk english male', score: 85 },
-        { name: 'daniel', score: 80 }, 
-        { name: 'oliver', score: 78 },
-        { name: 'alex', score: 75 }, 
-        { name: 'male', score: 60 },
-        { name: 'deep', score: 55 },
-        { name: 'english male', score: 50 }
+        { name: 'daniel', score: 85 },
+        { name: 'alex', score: 80 },
+        { name: 'male', score: 60 }
       ];
+      
+      const preferences = isAndroid ? androidVoicePreferences : otherVoicePreferences;
       
       let bestVoice = null;
       let highestScore = -1;
@@ -591,19 +653,20 @@
         const voiceName = voice.name.toLowerCase();
         let score = 0;
         
-        for (let j = 0; j < voicePreferences.length; j++) {
-          if (voiceName.includes(voicePreferences[j].name)) {
-            score = voicePreferences[j].score;
+        for (let j = 0; j < preferences.length; j++) {
+          if (voiceName.includes(preferences[j].name)) {
+            score = preferences[j].score;
             break;
           }
         }
         
-        if (voiceName.includes('uk') || voiceName.includes('british') || voiceName.includes('daniel')) {
-          score += 20;
-        }
-        
-        if (voiceName.includes('david') || voiceName.includes('mark')) {
-          score += 15;
+        if (isAndroid) {
+          if (voiceName.includes('google')) {
+            score += 20; 
+          }
+          if (voiceName.includes('uk') || voiceName.includes('british')) {
+            score += 15; 
+          }
         }
         
         if (score > highestScore) {
@@ -642,22 +705,23 @@
         const bestVoice = getBestDeepVoice();
         if (bestVoice) {
           utterance.voice = bestVoice;
-          console.log('Selected voice for this device:', bestVoice.name);
+          console.log('Selected voice for', isAndroid ? 'Android' : 'other', ':', bestVoice.name);
         }
         
         utterance.pitch = 0.25;       
-        utterance.rate = 1.05;          
-        utterance.volume = 1;            
         
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (isMobile) {
+        if (isAndroid) {
           utterance.rate = 1.0; 
+        } else {
+          utterance.rate = 1.05; 
         }
+        
+        utterance.volume = 1;          
         
         utterance.onstart = function() {
           isSpeaking = true;
           playBtn.classList.add('speaking');
-          statusEl.innerHTML = '> VOICE ACTIVATED [DEEP_MODE]';
+          statusEl.innerHTML = isAndroid ? '> ANDROID VOICE ACTIVATED [DEEP_MODE]' : '> VOICE ACTIVATED [DEEP_MODE]';
           statusEl.classList.add('warning');
         };
         
@@ -683,6 +747,8 @@
             statusEl.innerHTML = '> VOICE BLOCKED [CHECK_PERMISSIONS]';
           } else if (event.error === 'interrupted') {
             statusEl.innerHTML = '> VOICE INTERRUPTED';
+          } else if (event.error === 'network') {
+            statusEl.innerHTML = '> NETWORK ERROR [CHECK_CONNECTION]';
           } else {
             statusEl.innerHTML = '> VOICE ERROR [TRY_AGAIN]';
           }
@@ -698,7 +764,7 @@
       }
     }
     
-    playBtn.addEventListener('click', function(e) {
+    function handlePlay(e) {
       e.preventDefault();
       
       if (speechSynth.paused) {
@@ -713,21 +779,9 @@
       } else {
         speakText();
       }
-    });
+    }
     
-    playBtn.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      if (speechSynth.speaking) {
-        speechSynth.cancel();
-        setTimeout(() => {
-          speakText();
-        }, 100);
-      } else {
-        speakText();
-      }
-    }, { passive: false });
-    
-    stopBtn.addEventListener('click', function(e) {
+    function handleStop(e) {
       e.preventDefault();
       if (speechSynth.speaking) {
         speechSynth.cancel();
@@ -743,28 +797,16 @@
           }
         }, 2000);
       }
-    });
+    }
     
-    stopBtn.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      if (speechSynth.speaking) {
-        speechSynth.cancel();
-        isSpeaking = false;
-        playBtn.classList.remove('speaking');
-        statusEl.innerHTML = '> VOICE TERMINATED';
-        statusEl.classList.add('warning');
-        
-        setTimeout(() => {
-          if (!isSpeaking) {
-            statusEl.innerHTML = '> AWAITING ACTIVATION SEQUENCE...';
-            statusEl.classList.remove('warning');
-          }
-        }, 2000);
-      }
-    }, { passive: false });
+    playBtn.addEventListener('click', handlePlay);
+    playBtn.addEventListener('touchstart', handlePlay, { passive: false });
+    
+    stopBtn.addEventListener('click', handleStop);
+    stopBtn.addEventListener('touchstart', handleStop, { passive: false });
     
     document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'visible' && speechSynth) {
+      if (document.visibilityState === 'hidden' && speechSynth.speaking) {
         speechSynth.cancel();
       }
     });
@@ -772,8 +814,30 @@
     if (isSpeechSupported()) {
       window.addEventListener('load', function() {
         speechSynth.cancel(); 
+        
+        if (isAndroid) {
+          try {
+            const dummy = new SpeechSynthesisUtterance('');
+            dummy.volume = 0;
+            speechSynth.speak(dummy);
+            setTimeout(() => {
+              speechSynth.cancel();
+            }, 50);
+          } catch (e) {}
+        }
       });
     }
+    
+    setInterval(() => {
+      if (!voicesLoaded) {
+        let voices = speechSynth.getVoices();
+        if (voices.length > 0) {
+          availableVoices = voices;
+          voicesLoaded = true;
+          console.log('Voices loaded via interval:', voices.length);
+        }
+      }
+    }, 2000);
     
   })();
 </script>
